@@ -84,3 +84,15 @@ FROM pokemons p, types t
 WHERE p.primary_type = t.id
 GROUP BY t.name
 ORDER BY COUNT DESC;
+
+
+--How many pokemon at level 100 does each trainer with at least one level 100 pokemon have?
+SELECT COUNT(*)
+FROM pokemon_trainer pt
+WHERE pt.pokelevel = 100
+GROUP BY pt.trainerid;
+
+SELECT DISTINCT t.trainername, COUNT(*)
+FROM trainers t, pokemon_trainer pt
+WHERE pt.pokelevel = 100 AND t.trainerid = pt.trainerid
+GROUP BY t.trainerid;
