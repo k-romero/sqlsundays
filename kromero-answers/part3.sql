@@ -96,3 +96,10 @@ SELECT DISTINCT t.trainername, COUNT(*)
 FROM trainers t, pokemon_trainer pt
 WHERE pt.pokelevel = 100 AND t.trainerid = pt.trainerid
 GROUP BY t.trainerid;
+
+
+--How many pokemon only belong to one trainer and no other?
+SELECT DISTINCT pt.pokemon_id, COUNT(*)
+FROM pokemon_trainer pt
+GROUP BY pt.pokemon_id
+HAVING COUNT(*) = 1;
