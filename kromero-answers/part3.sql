@@ -50,3 +50,9 @@ FROM pokemon_trainer pt
 JOIN pokemons p ON pt.pokemon_id = p.id
 WHERE pt.trainerid = 303;
 
+--How many pokemon have a secondary type Poison
+
+SELECT COUNT(*) 
+FROM pokemons p, types t
+WHERE p.secondary_type = t.id 
+AND t.name = 'Poison';
