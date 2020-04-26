@@ -63,3 +63,24 @@ SELECT COUNT(*)
 FROM pokemons p
 JOIN types t ON p.secondary_type = t.id
 WHERE t.name = 'Poison';
+
+--What are all the primary types and how many pokemon have that type?
+
+--w/o join
+SELECT t.name, COUNT(*)
+FROM pokemons p, types t
+WHERE p.primary_type = t.id
+GROUP BY t.name;
+
+--w join
+SELECT t.name AS primary_type, COUNT(*) AS pokemon_w_type
+FROM pokemons p
+JOIN types t ON p.primary_type = t.id
+GROUP BY t.name;
+
+--w order
+SELECT t.name, COUNT(*)
+FROM pokemons p, types t
+WHERE p.primary_type = t.id
+GROUP BY t.name
+ORDER BY COUNT DESC;
